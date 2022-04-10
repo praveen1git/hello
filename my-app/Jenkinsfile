@@ -3,26 +3,17 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                dir("/home/ubuntu/jenkins-docker-pipeline/application/my-app") {
-                sh "mvn -Dmaven.test.failure.ignore=true clean package"                }
+                dir("/home/ubuntu/jenkins-docker-pipeline/application/my-app")
+                sh "mvn -Dmaven.test.failure.ignore=true clean package" 
+                
             }
         }
-     
-    }
-post {
-       always {
-          junit(
-        allowEmptyResults: true,
-        testResults: '*/test-reports/.xml'
-      )
-      }
-   } 
+    
         stage('deploy') {
             steps {
-                dir("/home/ubuntu/jenkins-docker-pipeline/application/my-app") {
+                dir("/home/ubuntu/jenkins-docker-pipeline/application/my-app")
                 sh "docker build -t newimage:1.0 ."
                 sh "docker run -d -p 80:80 newimage:1.0"
-
             }
         }
 

@@ -4,6 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 dir("/var/lib/jenkins/workspace/test-pipeline/my-app"){
+                sh "sudo apt-get install openjdk-8-jdk -y"
                 sh "mvn -Dmaven.test.failure.ignore=true clean package" 
                 }
             }

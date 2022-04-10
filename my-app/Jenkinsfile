@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                dir("/var/lib/jenkins/workspace/jenkins1/my-app") {
+                dir("/home/ubuntu/jenkins-docker-pipeline/application/my-app") {
                 sh "mvn -Dmaven.test.failure.ignore=true clean package"                }
             }
         }
@@ -17,4 +17,14 @@ post {
       )
       }
    } 
+        stage('deploy') {
+            steps {
+                dir("/home/ubuntu/jenkins-docker-pipeline/application/my-app") {
+                sh "docker build -t newimage:1.0 ."
+                sh "docker run -d -p 80:80 newimage:1.0"
+
+            }
+        }
+
+    }
 }

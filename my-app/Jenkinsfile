@@ -4,6 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 dir("/var/lib/jenkins/workspace/test1/my-app"){
+                sh "${M2_HOME}/bin/mvn -version"
                 sh "mvn -Dmaven.test.failure.ignore=true clean package" 
                 }
             }

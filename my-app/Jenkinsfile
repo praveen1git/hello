@@ -6,7 +6,6 @@ pipeline {
                 sh "git clone https://github.com/praveen1git/hello.git"
                 sh "cd ./my-app/"
                 sh "mvn -Dmaven.test.failure.ignore=true clean package" 
-                }
             }
         }
     

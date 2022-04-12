@@ -4,9 +4,8 @@ pipeline {
         stage('Build') {
             steps {
                 dir("/var/lib/jenkins/workspace/works_free/my-app"){
-                }  
-                def M2_HOME = tool name: 'apache-maven-3.8.5', type: 'maven'
-                sh "${M2_HOME}/bin/mvn -B -DskipTests clean package"
+                }
+                sh "${M2_HOME}/bin/mvn -X -DskipTests clean package"
             }
         }
     

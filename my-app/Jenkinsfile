@@ -1,14 +1,6 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
-            steps {
-                dir("/var/lib/jenkins/workspace/works_free/my-app"){
-                }
-                sh "mvn -X -DskipTests clean package"
-            }
-        }
-    
         stage('deploy') {
             steps {
                 dir("/var/lib/jenkins/workspace/works_free/my-app"){

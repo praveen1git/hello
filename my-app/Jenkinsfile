@@ -5,7 +5,7 @@ pipeline {
             steps {
                 dir("/var/lib/jenkins/workspace/works_free/my-app"){
                 sh "docker build -t newimage:1.0 ."
-                sh "docker run -d -p 80:80 newimage:1.0"
+                sh "docker run -d -p 8081:8081 newimage:1.0"
             }
             }
         }

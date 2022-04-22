@@ -4,8 +4,8 @@ pipeline {
         stage('deploy') {
             steps {
                 dir("/var/lib/jenkins/workspace/works_free/my-app"){
-                sh "docker build -t newimage:2.0 ."
-                sh "docker run -d -p 8081:8081 newimage:2.0"
+                sh "docker build -t newimage:3.0 ."
+                sh "docker run -itdp 8085:8085 newimage:3.0"
             }
             }
         }
